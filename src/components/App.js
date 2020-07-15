@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import Dashboard from './Dashboard';
 
 
 class App extends Component {
@@ -12,11 +13,19 @@ class App extends Component {
     return (
       <div className="App">
         Would you rather 2...
-        Starter Code
+        
+        {this.props.loading === true 
+          ? null 
+          : <Dashboard /> }
       </div>
     );
   }
-
 }
-export default connect()(App);
+
+function mapStateToProps ({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+export default connect(mapStateToProps)(App);
 
