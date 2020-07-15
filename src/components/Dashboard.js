@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Questions from './Questions'
+import Question from './Question'
+import NavBar from './NavBar'
 
 class Dashboard extends Component {
     render(){
         console.log(this.props)
         return(
             <div>
+                <NavBar user={this.props.authedUser}/>
                 <h1>Dashboard</h1>
                 <ul>
                     {this.props.questionIds.map((id) => (
                         <li key={id}>
-                            <Questions id={id} />
+                            <Question id={id} />
                         </li>
                     ))}
                 </ul>
@@ -20,10 +22,11 @@ class Dashboard extends Component {
     }
 }
 
-function mapStateToProps ({ questions }) {
+function mapStateToProps ({ questions }, { authedUser }) {
     return {
         questionIds: Object.keys(questions)
-            .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+            .sort((a,b) => questions[b].timestamp - questions[a].timestamp),
+        authedUser    
     }
 }
 

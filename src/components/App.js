@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { connect } from 'react-redux'
+import { Router, Route, Switch } from "react-router";
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard';
+import QuestionDetails from './QuestionDetails'
 
 
 class App extends Component {
@@ -11,20 +13,21 @@ class App extends Component {
   }
   render (){
     return (
-      <div className="App">
-        Would you rather 2...
-        
-        {this.props.loading === true 
-          ? null 
-          : <Dashboard /> }
-      </div>
-    );
+
+        <div className="App">          
+          {
+            <Dashboard />
+          }
+        </div>
+      
+    )
   }
 }
 
 function mapStateToProps ({ authedUser }) {
   return {
-    loading: authedUser === null
+    loading: authedUser === null,
+    authedUser
   }
 }
 export default connect(mapStateToProps)(App);

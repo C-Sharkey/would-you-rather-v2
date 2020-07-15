@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-class Questions extends Component {
+
+class Question extends Component {
     render (){
         console.log(this.props)
         const { question, user, id } = this.props
@@ -10,9 +12,12 @@ class Questions extends Component {
             <div>
                 <img src={user.avatarURL} alt={user.name} />
                 <p>Name: {user.name}</p> 
+                <p>Would you rather...</p>
                 <p>Option 1: {question.optionOne.text}</p>
+                <p>Or</p>
                 <p>Option 2: {question.optionTwo.text}</p>
-                <button type='submit'>Vote</button>
+                
+                    <button>View Question</button>
             </div>
         )
     }
@@ -29,4 +34,4 @@ function mapStatesToProps ({users, questions}, { id }) {
     }
 }
 
-export default connect(mapStatesToProps)(Questions)
+export default connect(mapStatesToProps)(Question)
