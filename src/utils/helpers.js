@@ -14,9 +14,9 @@ export function formatDate (timestamp) {
       timestamp,
       text,
       avatar: avatarURL,
-      likes: likes.length,
-      replies: replies.length,
-      hasLiked: likes.includes(authedUser),
+      //likes: likes.length,
+      //replies: replies.length,
+      //hasLiked: likes.includes(authedUser),
       parent: !parentQuestion ? null : {
         author: parentQuestion.author,
         id: parentQuestion.id,
