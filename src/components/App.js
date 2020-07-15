@@ -5,13 +5,14 @@ import { handleInitialData } from '../actions/shared'
 
 
 class App extends Component {
-  componentDidMount(){
-    this.props.dispatch(handleInitialData)
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
   }
   render (){
     return (
       <div className="App">
         Would you rather 2...
+        Starter Code
       </div>
     );
   }
