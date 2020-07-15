@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatQuestion } from '../utils/helpers'
 
 class Questions extends Component {
     render (){
         console.log(this.props)
+        const { question, user, id } = this.props
         return (
+
             <div>
-                Questions 
+                <img src={user.avatarURL} alt={user.name} />
+                <p>Name: {user.name}</p> 
+                <p>Option 1: {question.optionOne.text}</p>
+                <p>Option 2: {question.optionTwo.text}</p>
+                <button type='submit'>Vote</button>
             </div>
         )
     }
@@ -15,12 +20,12 @@ class Questions extends Component {
 
 }
 
-function mapStatesToProps ({authedUser, users, questions}, { id }) {
+function mapStatesToProps ({users, questions}, { id }) {
     const question = questions[id]
-
+    const user = users[question.author]
     return {
-        authedUser, 
-        question: formatQuestion(question, users[question.author], authedUser)
+      question,
+      user
     }
 }
 
