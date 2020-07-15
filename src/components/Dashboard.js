@@ -10,13 +10,15 @@ class Dashboard extends Component {
             <div>
                 <NavBar user={this.props.authedUser}/>
                 <h1>Dashboard</h1>
-                <ul>
-                    {this.props.questionIds.map((id) => (
-                        <li key={id}>
-                            <Question id={id} />
-                        </li>
-                    ))}
-                </ul>
+                <div className='container'>
+                    <ul>
+                        {this.props.questionIds.map((id) => (
+                            <li key={id}>
+                                <Question id={id} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         )
     }
