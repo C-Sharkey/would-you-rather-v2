@@ -8,7 +8,6 @@ class Dashboard extends Component {
         console.log(this.props)
         return(
             <div>
-                <NavBar user={this.props.authedUser}/>
                 <h1>Dashboard</h1>
                 <div className='container'>
                     <ul>

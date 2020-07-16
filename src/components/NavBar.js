@@ -6,19 +6,20 @@ import { NavLink } from 'react-router-dom'
 
 class NavBar extends Component {
 
-handleLogout = (e) => {
+handleSignOut = (e) => {
     const { dispatch } = this.props
     dispatch(handleSetAuthedUser(null))
     }
-        
+
     render() {
-        
+        const { user } = this.props
+        console.log('Navbar loggedInUser : ', user)
        
         return (
             <div>
                 <ul className='nav'>
                     <li>
-                        <NavLink to='/dashboard'  activeClassName='active'>
+                        <NavLink to='/'  activeClassName='active'>
                             Home
                         </NavLink>
                     </li>
@@ -33,10 +34,10 @@ handleLogout = (e) => {
                         </NavLink>
                     </li>
                     <li>
-                        Signed In: 
+                        Signed In: {user}
                     </li>
                     <li>
-                        <NavLink to='/signOut'  activeClassName='active'>
+                        <NavLink to='/' onClick={this.handleSignOut}>
                         Sign Out
                         </NavLink>
                     </li>
@@ -46,10 +47,11 @@ handleLogout = (e) => {
     }
 }
 
-function mapStateToProps({ users }, { authedUser }){
-    const user = users[authedUser]
+function mapStateToProps({ users }, { loggedInID }){
+    const user = users[loggedInID]
     return {
-      user
+      user: user.name,
+      
     }
   }
 
