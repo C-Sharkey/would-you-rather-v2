@@ -8,7 +8,7 @@ class NewQuestion extends Component {
                 New Question
             </div>
         )
-    }
+    } 
 }
 
-export default connect(NewQuestion)
+export default connect()(NewQuestion)
