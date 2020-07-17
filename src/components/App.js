@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard';
 import QuestionDetails from './QuestionDetails'
+import QuestionResults from './QuestionResults'
 import Login from './Login'
 import NotFound from './NotFound'
 import NewQuestion from './NewQuestion'
@@ -32,6 +33,8 @@ class App extends Component {
                 <NavBar loggedInID={authedUser} /> 
                 <Switch>
                   <Route path='/' exact component={Dashboard} />
+                  <Route path='/questions/:id' exact component={QuestionDetails} />
+                  <Route path='/results/:id' exact component={QuestionResults} />
                   <Route path='/new' exact component={NewQuestion} />
                   <Route path='/leaderboard' exact component={Leaderboard} />
                   <Route path='/404' component={NotFound} />
