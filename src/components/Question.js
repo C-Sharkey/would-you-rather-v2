@@ -15,9 +15,10 @@ class Question extends Component {
                 <p>Would you rather...</p>
                 <p>Option 1: {question.optionOne.text}</p>
                 <p>Or</p>
-                <p>Option 2: {question.optionTwo.text}</p>
-                
-                    <button>View Question</button>
+                <p>...</p>
+                <Link to={`/questions/${id}`} >
+                  <button>View Question</button>
+                </Link>  
             </div>
         )
     }
