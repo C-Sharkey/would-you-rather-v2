@@ -23,7 +23,6 @@ class Question extends Component {
         )
     }
 
-
 }
 
 function mapStatesToProps ({users, questions}, { id }) {

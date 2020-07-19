@@ -9,19 +9,19 @@ export default function questions (state = {}, action) {
              }
 
         case ADD_QUESTION_ANSWER:
-            const { authedUser, questionID, answer } = action.authedUser
-
+            const { authedUser, qid, answer } = action.authedUser
+            console.log('RED::::::::::::::::::::::::::: ')
+            console.log('RED:::: ', authedUser, qid, answer)
             return {
                 ...state, 
-                [questionID]:{
-                    ...state[questionID],
+                [qid]:{
+                    ...state[qid],
                     [answer]: {
-                        ...state[questionID][answer],
-                        votes: state[questionID][answer].votes.concat([authedUser])
+                        ...state[qid][answer],
+                        votes: state[qid][answer].votes.concat([authedUser])
                     }
                 }
             }
-
             case ADD_QUESTION:
                 const { question } = action
                 return {
@@ -33,3 +33,4 @@ export default function questions (state = {}, action) {
             return state
     }
 }
+

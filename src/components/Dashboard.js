@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
+import QuestionDetails from './Question'
+import QuestionsResultsList from './QuestionsResultsList'
 // React tabs for tab functionality 
 // referenced this tutorial: https://www.youtube.com/watch?v=tBaBl7gpYhs
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
@@ -18,12 +19,12 @@ class Dashboard extends Component {
 
         const ansQu = questionsAnswered.map((answer) => (
             <li key={answer.id} >
-                <Question id={answer.id} />
+                <QuestionsResultsList id={answer.id} />
             </li>
             )) 
         const unAnsQu = questionsUnanswered.map((answer) => (
             <li key={answer.id} >
-                <Question id={answer.id} />
+                <QuestionDetails id={answer.id} />
             </li>
             ))             
          
@@ -32,7 +33,10 @@ class Dashboard extends Component {
                 <h1>Dashboard</h1>
                 <h2>Total Questions: {questionCount} </h2>
 
-                <Tabs selected={this.state.tabSelectedItem} onChange={tabSelectedItem => this.setState({ tabSelectedItem })}>
+                <Tabs 
+                    selected={this.state.tabSelectedItem} 
+                    onChange={tabSelectedItem => this.setState({ tabSelectedItem })}
+                >
                     <TabList>
                         <Tab item="unAnsweredQuestions">Unanswered Questions ({unAnsQuCount})</Tab>
                         <Tab item="AnsweredQuestions">Answered Questions ({AnsQuCount})</Tab>
