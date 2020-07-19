@@ -16,11 +16,11 @@ export function addQuestionForQuestion (question) {
     }
   }
   
-  export function saveAnswerForQuestion (authedUser, questionID, answer) {
+  export function saveAnswerForQuestion (authedUser, qid, answer) {
     return {
       type: ADD_QUESTION_ANSWER,
       authedUser,
-      questionID,
+      qid,
       answer
     }
   }

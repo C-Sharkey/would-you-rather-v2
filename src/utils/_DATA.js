@@ -186,12 +186,13 @@ let users = {
             }
           }
         }
-  
+        console.log('DATA: ', authedUser, ' | ',qid, ' | ', answer)
         questions = {
           ...questions,
           [qid]: {
             ...questions[qid],
             [answer]: {
+              
               ...questions[qid][answer],
               votes: questions[qid][answer].votes.concat([authedUser])
             }

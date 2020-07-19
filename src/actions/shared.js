@@ -19,16 +19,18 @@ export function handleInitialData () {
     };
   }
 
-  export function handleSaveAnswer ({ authedUser, questionID, answer }) {
+  export function handleSaveAnswer ({ authedUser, qid, answer }) {
+    console.log('SHARED::: ', authedUser, ' | ', qid, ' | ', answer)
+
     return (dispatch) => {
   
-      dispatch(saveAnswerForQuestion({authedUser, questionID, answer}))
-      dispatch(saveAnswerForUser({authedUser, questionID, answer}))
+      dispatch(saveAnswerForQuestion({authedUser, qid, answer}))
+      dispatch(saveAnswerForUser({authedUser, qid, answer}))
   
-      return saveQuestionAnswer({authedUser, questionID, answer})
+      return saveQuestionAnswer({authedUser, qid, answer})
       .catch((error) => {
         console.log('Error: ', error)
-        dispatch(saveAnswerForQuestion({authedUser, questionID, answer}))
+        dispatch(saveAnswerForQuestion({authedUser, qid, answer}))
       })
     }
   }
