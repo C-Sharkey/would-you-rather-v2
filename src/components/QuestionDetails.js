@@ -11,33 +11,26 @@ class QuestionDetails extends Component{
     }
 
     handleChange = (e) => {
-        console.log('STATE:: ', this.state)
-        console.log('STATE:: ', e.target.value)
         this.setState({
             option: e.target.value
         })
-        console.log('STATE:: ', this.state)
     }
 
     handleSelection = () => {
         const { dispatch, authedUser, questionID} = this.props
         const answer = this.state.option
         const qid = questionID
-        console.log('!!!!!Dispatch____ ', authedUser, ' | ', qid, ' | ', answer)
         dispatch(handleSaveAnswer({authedUser, qid, answer})) 
     }
 
     handleSetSelection = () => {
         const { myAnswer } = this.props
-        console.log('EDDY An:: ', myAnswer)
-        console.log('EDDY op!!!:: ', this.state)
 
         if(myAnswer !== null) {
             this.setState({
                 option: myAnswer
             })
         }
-        console.log('EDDY op!!!!!:: ', this.state)
 
     }
 
@@ -48,7 +41,6 @@ class QuestionDetails extends Component{
     render(){
         const { option } = this.state
         const { user, question, isInvalid, questionID } = this.props
-        console.log('Q-ID ',questionID)
 
         return(
             <div>
@@ -107,10 +99,6 @@ function mapStateToProps ({questions, users, authedUser}, props) {
     }
 
     const myAnswer = users[authedUser].answers[id]
-    console.log('EDDY myANS:: ',myAnswer)
-    console.log('EDDY myANS:: ',users[authedUser])
-    console.log('EDDY myANS:: ',users[authedUser].answers)
-
 
     return {
         questionID: id,

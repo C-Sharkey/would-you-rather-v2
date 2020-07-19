@@ -20,7 +20,6 @@ export function handleInitialData () {
   }
 
   export function handleSaveAnswer ({ authedUser, qid, answer }) {
-    console.log('SHARED::: ', authedUser, ' | ', qid, ' | ', answer)
 
     return (dispatch) => {
   
@@ -29,7 +28,6 @@ export function handleInitialData () {
   
       return saveQuestionAnswer({authedUser, qid, answer})
       .catch((error) => {
-        console.log('Error: ', error)
         dispatch(saveAnswerForQuestion({authedUser, qid, answer}))
       })
     }

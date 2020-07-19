@@ -10,8 +10,6 @@ export default function questions (state = {}, action) {
 
         case ADD_QUESTION_ANSWER:
             const { authedUser, qid, answer } = action.authedUser
-            console.log('RED::::::::::::::::::::::::::: ')
-            console.log('RED:::: ', authedUser, qid, answer)
             return {
                 ...state, 
                 [qid]:{

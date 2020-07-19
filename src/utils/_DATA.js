@@ -186,7 +186,6 @@ let users = {
             }
           }
         }
-        console.log('DATA: ', authedUser, ' | ',qid, ' | ', answer)
         questions = {
           ...questions,
           [qid]: {

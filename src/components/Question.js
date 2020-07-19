@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 
 class Question extends Component {
     render (){
-        console.log(this.props)
         const { question, user, id } = this.props
         return (
 
