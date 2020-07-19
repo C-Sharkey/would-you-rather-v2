@@ -32,7 +32,7 @@ class App extends Component {
               <div>
                 <NavBar loggedInID={authedUser} /> 
                 <Switch>
-                  <Route path='/' exact component={Dashboard} />
+                  <Route path='/' authedUser={authedUser} exact component={Dashboard} />
                   <Route path='/questions/:id' exact component={QuestionDetails} />
                   <Route path='/results/:id' exact component={QuestionResults} />
                   <Route path='/new' exact component={NewQuestion} />
