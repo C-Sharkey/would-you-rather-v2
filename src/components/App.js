@@ -43,8 +43,7 @@ class App extends Component {
                         <Route path='/results/:id' exact component={QuestionResults} />
                         <Route path='/new' exact component={NewQuestion} />
                         <Route path='/leaderboard' exact component={Leaderboard} />
-                        <Route path='/404' component={NotFound} />
-                        <Redirect to="/404" />
+                        <Route path='*' component={NotFound} />
                       </Switch>
                     </div>
                   )}
