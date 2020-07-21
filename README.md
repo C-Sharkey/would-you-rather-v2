@@ -2,69 +2,38 @@
 
 This project is the second assignment project in Udacitys React course. It is focused on using Redux to manage the app data for a React 'Would you rather' game app. The app allows a user to chose a profile to login with (no authentication), review, answer and create questions and also see a leaderboard of all the user profiles. 
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+To install the project: Clone the repository, change directories, and use NPM to install the dependencies.
 
-### `yarn start`
+$ git clone https://github.com/james-priest/reactnd-project-would-you-rather.git
+$ cd reactnd-project-would-you-rather
+$ npm install
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usage
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The project can be run with
 
-### `yarn test`
+- npm start
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The project can be viewed in the browser at
 
-### `yarn build`
+- http://localhost:3000
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Approach
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project use React, Redux-thunk, and react-bootstrap with a local _DATA.js file to store initial data.
 
-### `yarn eject`
+## Improvements
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Future improvements for this project could be:
+- Using functional components and hooks
+- Using Typescript
+- Adding tests
+- Writing to a file
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+License: MIT
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
