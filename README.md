@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Would You Rather React App
+
+This project is the second assignment project in Udacitys React course. It is focused on using Redux to manage the app data for a React 'Would you rather' game app. The app allows a user to chose a profile to login with (no authentication), review, answer and create questions and also see a leaderboard of all the user profiles. 
 
 ## Available Scripts
 
