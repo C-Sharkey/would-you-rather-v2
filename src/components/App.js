@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import '../App.css';
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard';
 import QuestionDetails from './QuestionDetails'
