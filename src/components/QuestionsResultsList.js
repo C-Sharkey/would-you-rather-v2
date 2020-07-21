@@ -18,7 +18,7 @@ class QuestionResultsList extends Component {
             <Card.Img variant="top" alt={user.avatarURL} src={user.avatarURL} />
             <Card.Body>
                 <Card.Title>{user.name} asks would you rather:</Card.Title>
-                <Card.Text>
+                <div>
                   <p>{question.optionOne.text}</p>
                   <p>{myAnswer[0][1] === "optionOne"
                   ? <Badge variant="info">Picked by you</Badge>
@@ -33,7 +33,7 @@ class QuestionResultsList extends Component {
                   : null }</p>
                   <p>Votes: {optTwoVotes}</p>
                   <ProgressBar now={optTwoPerc} label={`${optTwoPerc}%`} />
-                </Card.Text>
+                </div>
             </Card.Body>
             </Card>
     )
