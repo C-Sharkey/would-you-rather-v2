@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
-
+import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+ 
+// gets user data, populates a select drop down
+// the submited user is set to 'authedUser'
+// when authedUser === true, page displays dash component
 
 class Login extends Component {
     state = {
         value: '',
-        loading: false
       }
+      // state holds select value
     
-      handleLoading = () => {
-        this.setState({ loading: true });
-      };
-    
-      // Form functions
+      // Sets state.value to selected value
       handleOnChange = (e) => {
         const selectValue = e.target.value
           this.setState(currentState => ({ 
@@ -22,9 +22,9 @@ class Login extends Component {
     
         };
       
+      // submited form dispatches authedUser to store & resets state
       handleSubmit = (e) => {
-        e.preventDefault();   
-        
+        e.preventDefault();     
         const { value } = this.state
         const { dispatch, id } = this.props
         
@@ -34,13 +34,13 @@ class Login extends Component {
         }))
       }
     
+      // Maps through users to populate dropdown
       getOptions = () => {
         const { users } = this.props
         return users.map(user => ({   
           key: user.id,
           label: user.name,
           value: user.id,
-          //image: { avatar: true, src: user.avatarURL }
         }))
       } 
 
@@ -49,33 +49,31 @@ class Login extends Component {
         const { users } = this.props
         const disabled = value === '' ? true : false        
         return (
-            <div>
-                <form onSubmit={this.handleSubmit} >
-                <h2> Sign In </h2>
 
-                <label htmlFor='userProfile'>Select a profile:</label>
-                <select
-                    id='userProfile'
-                    name='userProfile'
-                    placeholder="Select A Profile" 
-                    onChange={this.handleOnChange}       
-                >
-                { users.map(user => (
-                    <option 
-                    key={user.value}
-                    value={user.value}>
-                    {user.label}
-                    </option>
-                    ))                
-                }
-                </select>
-                <button 
-                    type='submit' 
-                    disabled={disabled} 
-                >Login
-                </button>
-                </form>
-            </div>
+          <Container>
+            <Row>
+              <Col>
+              <h1>Would you rather?</h1>
+                <Form onSubmit={this.handleSubmit} className='mt-4'>               
+                  <h2 className='mt-4'> Sign In </h2>
+                    <Form.Label className='mt-4'>Profile</Form.Label>
+                    <Form.Control as="select" defaultValue="Select a profile..." onChange={this.handleOnChange}>
+                      <option>Select a profile...</option>
+                      { users.map(user => (
+                          <option 
+                            key={user.value}
+                            value={user.value}>
+                            {user.label}
+                          </option>
+                          ))                
+                      }
+                    </Form.Control>            
+                    <Button variant="primary" type="submit" disabled={disabled} className='mt-4'> Submit </Button>               
+                </Form>
+              </Col>
+            </Row>
+          </Container>
+
         )
     }
 }

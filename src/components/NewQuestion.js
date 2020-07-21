@@ -1,24 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/shared'
+import { Button, Form, Container, Row, Col } from 'react-bootstrap'
 
+// Form to create a new question and update store
+// form inputs are saved to state
+// on submit the stored inputs are dispatched to the store 
 class NewQuestion extends Component {
     state = {
         inputOne: '',
         inputTwo: '',
     }
 
+    // first question
     handleInputOne = (e) => {
         this.setState({
             inputOne: e.target.value
         })
     }
+    // second question
     handleInputTwo = (e) => {
         this.setState({
             inputTwo: e.target.value
         })
     }
-
+    // dispatches 2 options to store and returns to dashboard
     handleFormSubmit = (e) => {
         e.preventDefault()
         const { inputOne, inputTwo } = this.state
@@ -31,33 +37,34 @@ class NewQuestion extends Component {
         const { inputOne, inputTwo } = this.state
 
         return(
-            <div>
-                <h1>Create a new question</h1>
-                <form>
-                    <p>Would you rather:</p>
-                    <label htmlFor=''>Option 1</label>
-                    <input 
-                        type='text'
-                        value={inputOne} 
-                        onChange={this.handleInputOne}
-                        required 
-                    />
-                    <p>Or...</p>
-                    <label htmlFor=''>Option 2</label>
-                    <input 
-                        type='text' 
-                        value={inputTwo} 
-                        onChange={this.handleInputTwo}
-                        required 
-                    />
-                    <button 
-                        type='submit'
-                        onClick={this.handleFormSubmit}
-                    >
-                        Save Question
-                    </button>
-                </form>
-            </div>
+            <Container>
+                <Row>
+                    <Col>
+                        <Form>
+                            <h1>Create a new question</h1>
+                            <h3>Would you rather...</h3>
+                            <Form.Group controlId="option1">
+                                <Form.Label>Option 1</Form.Label>
+                                <Form.Control type="text" placeholder="Enter option one..." value={inputOne} onChange={this.handleInputOne} required />
+                                <Form.Text className="text-muted">
+                                Think of something funny.
+                                </Form.Text>
+                            </Form.Group>
+                            <h3>Or...</h3>
+                            <Form.Group controlId="option2">
+                                <Form.Label>Option 2</Form.Label>
+                                <Form.Control type="text" placeholder="Enter option two..." value={inputTwo} onChange={this.handleInputTwo} required />
+                                <Form.Text className="text-muted">
+                                Think of something funny.
+                                </Form.Text>
+                            </Form.Group>
+                            <Button variant="primary" type="submit" onClick={this.handleFormSubmit}>
+                                Save Question
+                            </Button>
+                        </Form>
+                    </Col>
+                </Row>
+            </Container>
         )
     } 
 }

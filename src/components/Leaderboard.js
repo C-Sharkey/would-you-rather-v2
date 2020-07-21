@@ -1,27 +1,54 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Table, Image, Container, Row, Col } from 'react-bootstrap'
 
 class Leaderboard extends Component {
+
+    // Use bootstrap table to display details
+    // sorted by total points highest to lowest
+
     render () {
         const { leaderboardData } = this.props
 
         return (
-            <div className='container'>
-                <h1>Leaderboard</h1>
-                <ul>
-                {
-                    leaderboardData.map((user) => (
-                        <li key={user.ID}>
-                            <p>{user.name}</p>
-                            <img alt={user.name} src={user.avatar} />
-                            <p>Total Points: {user.points} </p>
-                            <p>Questions Asked: {user.questionsAsked} </p>
-                            <p>Questions Answered: {user.questionsAnswered} </p>
-                        </li>
-                    ))
-                }
-                </ul>
-            </div>
+            <Container>
+                <Row>
+                    <Col>
+
+                        <h1>Leaderboard</h1>
+
+                        <Table responsive>
+                            <thead>
+                                <tr>
+                                <th>Rank</th>
+                                <th>Avatar</th>
+                                <th>Name</th>
+                                <th>Qu Asked</th>
+                                <th>Qu Answered</th>
+                                <th>Total Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            {
+                                leaderboardData.map((user, i) => (
+
+                                    <tr key={user.ID}>
+                                        <td>{i+1}</td>
+                                        <td><Image alt={user.name} src={user.avatar} style={{ width: '3rem' }}/></td>
+                                        <td>{user.name}</td>
+                                        <td>{user.questionsAsked}</td>
+                                        <td>{user.questionsAnswered}</td>
+                                        <td>{user.points}</td>
+                                    </tr>
+                                ))
+                            }
+                            </tbody>
+                        </Table>
+
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
