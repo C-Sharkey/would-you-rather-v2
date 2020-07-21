@@ -8,15 +8,37 @@ import { Link } from 'react-router-dom'
 // shows votes and percentage bar
 // shows badge for users answer
 class QuestionResults extends Component {
+    state = {
+        optionOneVotes:0,
+        optionOnePercentage:0,
+        optionTwoVotes:0,
+        optionTwoPercentage:0,   
+    }
+
+    // updates state with selected option if not null
+    handleSetVotes = () => {
+        if(this.props.isInvalid === false) {
+        // Votes and rounded percentages for each option
+        const { question } = this.props
+        const optOneVotes = question.optionOne.votes.length 
+        const optOnePerc = Math.round((optOneVotes/this.props.totalVotes)*100)
+        const optTwoVotes = question.optionTwo.votes.length 
+        const optTwoPerc = Math.round((optTwoVotes/this.props.totalVotes)*100)
+            this.setState({
+                optionOneVotes:optOneVotes,
+                optionOnePercentage:optOnePerc,
+                optionTwoVotes:optTwoVotes,
+                optionTwoPercentage:optTwoPerc,   
+            })
+        }
+    }
+    componentDidMount() {
+        this.handleSetVotes()
+    }    
     
     render () {
-        const { user, question, totalVotes, myAnswer, isInvalid } = this.props
-        // Votes and rounded percentages for each option
-        const optOneVotes = question.optionOne.votes.length 
-        const optOnePerc = Math.round((optOneVotes/totalVotes)*100)
-        const optTwoVotes = question.optionTwo.votes.length 
-        const optTwoPerc = Math.round((optTwoVotes/totalVotes)*100)
-
+        const { user, question, myAnswer, isInvalid } = this.props
+        const { optionOneVotes, optionOnePercentage, optionTwoVotes, optionTwoPercentage } = this.state
       return (
           <Container>
               <Row>
@@ -34,16 +56,16 @@ class QuestionResults extends Component {
                                     <p>{myAnswer[0][1] === "optionOne"
                                     ? <Badge variant="info">Picked by you</Badge>
                                     : null }</p>
-                                    <p><b>Votes:</b> {optOneVotes}</p>
-                                    <ProgressBar now={optOnePerc} label={`${optOnePerc}%`} />
+                                    <p><b>Votes:</b> {optionOneVotes}</p>
+                                    <ProgressBar now={optionOnePercentage} label={`${optionOnePercentage}%`} />
                                     <br />
                                     <br />
                                     <p>{question.optionTwo.text}</p>
                                     <p>{myAnswer[0][1] === "optionTwo"
                                     ? <Badge variant='info'>Picked by you </Badge>
                                     : null }</p>
-                                    <p><b>Votes:</b> {optTwoVotes}</p>
-                                    <ProgressBar now={optTwoPerc} label={`${optTwoPerc}%`}/>
+                                    <p><b>Votes:</b> {optionTwoVotes}</p>
+                                    <ProgressBar now={optionTwoPercentage} label={`${optionTwoPercentage}%`}/>
                                     </Card.Text>
                                     <Link to='/' ><Button variant="primary">Home</Button></Link>
                                 </Card.Body>
